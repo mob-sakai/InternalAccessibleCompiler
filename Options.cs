@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using CommandLine.Text;
+using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 
 namespace InternalAccessibleCompiler
@@ -14,6 +15,12 @@ namespace InternalAccessibleCompiler
 		/// </summary>
 		[Option('o', "output", Required = false, HelpText = "Output path")]
 		public string Output { get; set; }
+
+		/// <summary>
+		/// Configuration.
+		/// </summary>
+		[Option('c', "configuration", Required = false, Default = OptimizationLevel.Release, HelpText = "Configuration")]
+		public OptimizationLevel Configuration { get; set; }
 
 		/// <summary>
 		/// Input .csproj path.

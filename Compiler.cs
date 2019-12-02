@@ -24,12 +24,13 @@ namespace InternalAccessibleCompiler
 			Console.WriteLine($"Input Project Dir: {inputCsProjDir}");
 			Console.WriteLine($"Output Asembly Path: {outputAsemblyPath}");
 			Console.WriteLine($"Output Asembly Name: {outputAsemblyName}");
+			Console.WriteLine($"Configuration: {opt.Configuration}");
 
 			var csproj = File.ReadAllLines(inputCsProjPath);
 
 			// CSharpCompilationOptions
 			// MetadataImportOptions.All
-			var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, allowUnsafe: true)
+			var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, allowUnsafe: true, optimizationLevel: opt.Configuration)
 				.WithMetadataImportOptions(MetadataImportOptions.All);
 
 			// BindingFlags.IgnoreAccessibility
@@ -50,7 +51,8 @@ namespace InternalAccessibleCompiler
 			var preprocessorSymbols = csproj
 				.Select(line => reg_preprocessorSymbols.Match(line))
 				.Where(match => match.Success)
-				.SelectMany(match => match.Groups[1].Value.Split(';'));
+				.SelectMany(match => match.Groups[1].Value.Split(';'))
+				.Where(x=>opt.Configuration != OptimizationLevel.Debug || x != "DEBUG");
 
 			// Get all source codes.
 			var parserOption = new CSharpParseOptions(LanguageVersion.CSharp7, preprocessorSymbols: preprocessorSymbols);
