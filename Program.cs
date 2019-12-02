@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-public class InternalAccessCompiler
+public class InternalAccessibleCompiler
 {
 	class Options
 	{
