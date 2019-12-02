@@ -17,7 +17,7 @@ namespace InternalAccessibleCompiler
 		{
 			string inputCsProjPath = opt.ProjectPath;
 			string inputCsProjDir = Path.GetDirectoryName(inputCsProjPath);
-			string outputAsemblyPath = opt.Output;
+			string outputAsemblyPath = string.IsNullOrEmpty(opt.Output) ? Path.ChangeExtension(opt.ProjectPath, "dll") : opt.Output;
 			string outputAsemblyName = Path.GetFileNameWithoutExtension(outputAsemblyPath);
 
 			var log = new LoggerConfiguration()
