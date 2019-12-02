@@ -7,7 +7,7 @@
 [![Nuget](https://img.shields.io/nuget/v/InternalAccessibleCompiler)](https://www.nuget.org/packages/InternalAccessibleCompiler)
 ![GitHub](https://img.shields.io/github/license/mob-sakai/InternalAccessibleCompiler)
 ![Nuget](https://img.shields.io/nuget/dt/InternalAccessibleCompiler)
-![release](https://github.com/mob-sakai/InternalAccessibleCompiler/workflows/release/badge.svg)
+![release](https://github.com/mob-sakai/InternalAccessibleCompiler/workflows/Release/badge.svg)
 
 ## Summary
 
