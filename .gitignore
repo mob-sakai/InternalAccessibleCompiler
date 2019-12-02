@@ -16,3 +16,5 @@ obj
 
 .vs/
 bin/
+InternalAccessibleCompiler.sln
+compile.log
