@@ -1,0 +1,24 @@
+{
+  "name": "internal-accessible-compiler",
+  "version": "0.0.0",
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "7.0.0-beta.4",
+    "@semantic-release/git": "^7.1.0-beta.7",
+    "@semantic-release/github": "5.6.0-beta.1",
+    "@semantic-release/release-notes-generator": "^7.1.2",
+    "semantic-release": "^16.0.0-beta.26"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  }
+}

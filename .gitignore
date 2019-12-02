@@ -18,3 +18,5 @@ obj
 bin/
 InternalAccessibleCompiler.sln
 compile.log
+node_modules
+package-lock.json
