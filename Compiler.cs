@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using System;
+using Serilog;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,11 +20,17 @@ namespace InternalAccessibleCompiler
 			string outputAsemblyPath = opt.Output;
 			string outputAsemblyName = Path.GetFileNameWithoutExtension(outputAsemblyPath);
 
-			Console.WriteLine($"Input Project File: {inputCsProjPath}");
-			Console.WriteLine($"Input Project Dir: {inputCsProjDir}");
-			Console.WriteLine($"Output Asembly Path: {outputAsemblyPath}");
-			Console.WriteLine($"Output Asembly Name: {outputAsemblyName}");
-			Console.WriteLine($"Configuration: {opt.Configuration}");
+			var log = new LoggerConfiguration()
+					.WriteTo.Console()
+					.WriteTo.File(opt.Logfile)
+					.CreateLogger();
+
+			log.Information($"Input Project File: {inputCsProjPath}");
+			log.Information($"Input Project Dir: {inputCsProjDir}");
+			log.Information($"Output Asembly Path: {outputAsemblyPath}");
+			log.Information($"Output Asembly Name: {outputAsemblyName}");
+			log.Information($"Configuration: {opt.Configuration}");
+			log.Information($"Logfile: {opt.Logfile}");
 
 			var csproj = File.ReadAllLines(inputCsProjPath);
 
@@ -71,9 +77,9 @@ namespace InternalAccessibleCompiler
 			// Output compile errors.
 			foreach (var d in result.Diagnostics.Where(d => d.IsWarningAsError || d.Severity == DiagnosticSeverity.Error))
 			{
-				Console.WriteLine(string.Format("{0} ({1}): {2} {3}", d.Severity, d.Id, d.GetMessage(), d.Location.GetMappedLineSpan()));
+				log.Error(string.Format("{0} ({1}): {2} {3}", d.Severity, d.Id, d.GetMessage(), d.Location.GetMappedLineSpan()));
 			}
-			Console.WriteLine(result.Success ? "Success" : "Failed");
+			log.Information(result.Success ? "Success" : "Failed");
 		}
 	}
 }

@@ -23,6 +23,12 @@ namespace InternalAccessibleCompiler
 		public OptimizationLevel Configuration { get; set; }
 
 		/// <summary>
+		/// Logfile path.
+		/// </summary>
+		[Option('l', "logfile", Required = false, Default = "compile.log", HelpText = "Logfile path")]
+		public string Logfile { get; set; }
+
+		/// <summary>
 		/// Input .csproj path.
 		/// </summary>
 		[Value(1, MetaName = "ProjectPath", HelpText = "Input .csproj path")]
