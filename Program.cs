@@ -8,10 +8,12 @@ namespace InternalAccessibleCompiler
 		/// Entry point.
 		/// </summary>
 		/// <param name="args"></param>
-		public static void Main(string[] args)
+		public static int Main(string[] args)
 		{
+			int exitCode = 0;
 			Parser.Default.ParseArguments<Options>(args)
-				.WithParsed(Compiler.Compile);
+				.WithParsed(opt => exitCode = Compiler.Compile(opt));
+			return exitCode;
 		}
 	}
 }
