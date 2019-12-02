@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackAsTool>true</PackAsTool>
     <PackageId>InternalAccessibleCompiler</PackageId>
-    <PackageVersion>0.1.0</PackageVersion>
+    <PackageVersion>0.1.2</PackageVersion>
     <Authors>mob-sakai</Authors>
     <Copyright>mob-sakai</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
