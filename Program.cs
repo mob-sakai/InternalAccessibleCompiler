@@ -26,10 +26,12 @@ public class InternalAccessCompiler
 	static void Compile(Options opt)
 	{
 		string inputCsProjPath = opt.ProjectPath;
+		string inputCsProjDir = Path.GetDirectoryName(inputCsProjPath);
 		string outputAsemblyPath = opt.Output;
 		string outputAsemblyName = Path.GetFileNameWithoutExtension(outputAsemblyPath);
 
 		Console.WriteLine($"Input Project File: {inputCsProjPath}");
+		Console.WriteLine($"Input Project Dir: {inputCsProjDir}");
 		Console.WriteLine($"Output Asembly Path: {outputAsemblyPath}");
 		Console.WriteLine($"Output Asembly Name: {outputAsemblyName}");
 
@@ -67,6 +69,7 @@ public class InternalAccessCompiler
 			.Select(line => reg_cs.Match(line))
 			.Where(match => match.Success)
 			.Select(match => match.Groups[1].Value.Replace('\\', Path.DirectorySeparatorChar))
+			.Select(path => Path.Combine(inputCsProjDir, path))
 			.Select(path => CSharpSyntaxTree.ParseText(File.ReadAllText(path), parserOption, path));
 
 		// Start compiling.
