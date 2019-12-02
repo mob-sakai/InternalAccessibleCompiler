@@ -1,7 +1,9 @@
 ﻿using CommandLine;
+using CommandLine.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +17,17 @@ public class InternalAccessibleCompiler
 		public string Output { get; set; }
 		[Value(1, MetaName = "ProjectPath", HelpText = "Input .csproj path")]
 		public string ProjectPath { get; set; }
+
+		[Usage(ApplicationAlias = "InternalAccessibleCompiler")]
+		public static IEnumerable<Example> Examples
+		{
+			get
+			{
+				return new List<Example>() {
+					new Example("Compile your project to internal accessible dll", new Options { Output = "your.dll", ProjectPath = "your.csproj" })
+				};
+			}
+		}
 	}
 
 	public static void Main(string[] args)
