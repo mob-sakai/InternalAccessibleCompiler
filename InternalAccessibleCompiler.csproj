@@ -11,9 +11,13 @@
     <PackageProjectUrl>https://github.com/mob-sakai/InternalAccessibleCompiler</PackageProjectUrl>
     <Description>An Roslyn compiler to access internal types/methods</Description>
     <PackageIcon>icon.png</PackageIcon>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>
     <None Include="icon.png" Pack="true" PackagePath="\" />
+    <Compile Include="src/*.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.3.1" />
     <PackageReference Include="CommandLineParser" Version="2.3.0" />
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
