@@ -1,0 +1,22 @@
+{
+  "name": "internal-accessible-compiler",
+  "version": "0.0.0",
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/exec": "^3.4.0-beta.7",
+    "semantic-release": "^16.0.0-beta.39"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      ["@semantic-release/exec", {
+        "prepareCmd": "dotnet pack -c Release -p:PackageVersion=${nextRelease.version}",
+        "publishCmd": "dotnet nuget push bin/Release/*.nupkg -k $NUGET_TOKEN -s https://api.nuget.org/v3/index.json"
+      }]
+    ]
+  }
+}

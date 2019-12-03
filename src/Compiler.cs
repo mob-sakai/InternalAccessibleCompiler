@@ -13,11 +13,11 @@ namespace InternalAccessibleCompiler
 		/// <summary>
 		/// Compile the project.
 		/// </summary>
-		public static void Compile(Options opt)
+		public static int Compile(Options opt)
 		{
 			string inputCsProjPath = opt.ProjectPath;
 			string inputCsProjDir = Path.GetDirectoryName(inputCsProjPath);
-			string outputAsemblyPath = opt.Output;
+			string outputAsemblyPath = string.IsNullOrEmpty(opt.Output) ? Path.ChangeExtension(opt.ProjectPath, "dll") : opt.Output;
 			string outputAsemblyName = Path.GetFileNameWithoutExtension(outputAsemblyPath);
 
 			var log = new LoggerConfiguration()
@@ -80,6 +80,8 @@ namespace InternalAccessibleCompiler
 				log.Error(string.Format("{0} ({1}): {2} {3}", d.Severity, d.Id, d.GetMessage(), d.Location.GetMappedLineSpan()));
 			}
 			log.Information(result.Success ? "Success" : "Failed");
+
+			return result.Success ? 0 : 1;
 		}
 	}
 }

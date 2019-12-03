@@ -13,7 +13,7 @@ namespace InternalAccessibleCompiler
 		/// <summary>
 		/// Output path.
 		/// </summary>
-		[Option('o', "output", Required = false, HelpText = "Output path")]
+		[Option('o', "output", Required = false, Default = "", HelpText = "Output path")]
 		public string Output { get; set; }
 
 		/// <summary>
