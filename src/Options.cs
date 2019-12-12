@@ -20,7 +20,7 @@ namespace InternalAccessibleCompiler
         /// <summary>
         /// Target assembly names separated by semicolons to access internally.
         /// </summary>
-        [Option('a', "assemblyNames", Required = false, Default = "", Separator = ';', HelpText = "Target assembly names separated by semicolons to access internally")]
+        [Option('a', "assemblyNames", Required = false, Separator = ';', HelpText = "Target assembly names separated by semicolons to access internally")]
         public IEnumerable<string> AssemblyNames { get; set; }
 
         /// <summary>
