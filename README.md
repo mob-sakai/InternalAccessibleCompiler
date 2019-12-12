@@ -21,19 +21,14 @@ $ dotnet tool install --global InternalAccessibleCompiler
 
 ## Usage
 
-```bash
+```sh
 InternalAccessibleCompiler --output your.dll your.csproj
-
-  -o, --output            Output path
-
+  -o, --output            (Default: ) Output path｡ If it is empty, a dll is generated in the same path as csproj.
+  -a, --assemblyNames     (Default: ) Target assembly names separated by semicolons to access internally
   -c, --configuration     (Default: Release) Configuration
-
   -l, --logfile           (Default: compile.log) Logfile path
-
   --help                  Display this help screen.
-
   --version               Display version information.
-
   ProjectPath (pos. 1)    Input .csproj path
 ```
 
@@ -45,5 +40,6 @@ MIT
 
 - GitHub page : https://github.com/mob-sakai/InternalAccessibleCompiler
 - Nuget page : https://www.nuget.org/packages/InternalAccessibleCompiler
+- For Unity version : https://www.nuget.org/packages/InternalAccessibleCompilerForUnity
 
 [![become_a_sponsor_on_github](https://user-images.githubusercontent.com/12690315/66942881-03686280-f085-11e9-9586-fc0b6011029f.png)](https://github.com/users/mob-sakai/sponsorship)
