@@ -61,7 +61,7 @@ namespace InternalAccessibleCompiler
 				.Where(x=>opt.Configuration != OptimizationLevel.Debug || x != "DEBUG");
 
 			// Get all source codes.
-			var parserOption = new CSharpParseOptions(LanguageVersion.CSharp7, preprocessorSymbols: preprocessorSymbols);
+			var parserOption = new CSharpParseOptions(LanguageVersion.Latest, preprocessorSymbols: preprocessorSymbols);
 			var reg_cs = new Regex("<Compile Include=\"(.*\\.cs)\"", RegexOptions.Compiled);
 			var syntaxTrees = csproj
 				.Select(line => reg_cs.Match(line))
