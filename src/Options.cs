@@ -11,9 +11,9 @@ namespace InternalAccessibleCompiler
     public class Options
     {
         /// <summary>
-        /// Output path.
+        /// Output path. If it is empty, a dll is generated in the same path as csproj.
         /// </summary>
-        [Option('o', "output", Required = false, Default = "", HelpText = "Output path")]
+        [Option('o', "output", Required = false, Default = "", HelpText = "Output path. If it is empty, a dll is generated in the same path as csproj.")]
         public string Output { get; set; }
 
 
