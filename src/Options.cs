@@ -13,14 +13,14 @@ namespace InternalAccessibleCompiler
         /// <summary>
         /// Output path.
         /// </summary>
-        [Option('o', "output", Required = true, Default = "", HelpText = "Output path")]
+        [Option('o', "output", Required = false, Default = "", HelpText = "Output path")]
         public string Output { get; set; }
 
 
         /// <summary>
         /// Assembly names to access internal.
         /// </summary>
-        [Option('a', "assemblyNames", Required = true, Default = "", Separator = ';', HelpText = "Assembly names to access internal")]
+        [Option('a', "assemblyNames", Required = false, Default = "", Separator = ';', HelpText = "Assembly names to access internal")]
         public IEnumerable<string> AssemblyNames { get; set; }
 
         /// <summary>
